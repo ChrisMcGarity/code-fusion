@@ -18,7 +18,8 @@ var UserSchema = new Schema({
   },
   username: {
     type: String,
-    required: true
+    required: true,
+    unique: true
   },
   password: {
     type: String,
@@ -32,4 +33,5 @@ UserSchema.pre("save", function(next) {
   next();
 });
 
-module.exports = mongoose.model("User", UserSchema);
+//mlab collection for users = "appusers"
+module.exports = mongoose.model("User", UserSchema, 'appusers');
